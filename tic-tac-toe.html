@@ -1,0 +1,247 @@
+<html>
+	<head>
+		<title>Tic tac toe </title>
+		<link rel="stylesheet" href="css/bootstrap.min.css"><!--for bootstrap class-->
+		<meta charset="windows-1252">
+		<meta name="viewport" content="width=device-width", initial-scale=1.0>
+	</head>
+
+		<style>
+
+			.box{
+				box-sizing: border-box;
+				
+				}
+
+			.container{
+						width: 300px;
+						overflow:hidden;
+						margin:50px auto 0 auto; 
+						}
+
+			.container span{
+				font-size: 30px;
+				width: 100%;
+				display:block;
+				text-align: center;
+				font-family:all;
+				color:white;
+				background:black; 
+			}
+
+			.container .box{
+				font-color:white;
+				background:skyblue;
+				float: left;
+				width: 100px;
+				height: 100px;
+				border: 1px solid black;
+				transition:all .25s ease-in-out;
+				font-family: sans-serif;
+				padding-top:5px; 
+				font-size:100px;
+				text-align:center;
+				line-height: 100px;
+				cursor: pointer; 
+			}
+			.container .box:hover{
+				background:black;
+				color:#fff; 
+			}
+
+			button{
+				background:black;
+				color:white;
+				font-weight:bold;
+				border:1px solid ;
+				cursor:pointer;
+				width:300px;
+				height:40px;
+				font-size:22px;
+				display:block;
+				margin:10px auto;
+				font-family:all;
+				letter-spacing: 1px;
+			}
+
+			.win{
+				color:yellow;
+				background:black;
+			}
+			
+			.div2nd
+			{
+				font-size: 17px;
+				font-style: serif;
+				color:red;
+				font-weight: bold;
+				background-color:;
+			}
+
+			.div3rd
+			{
+				font-size: 18px;
+				font-style: serif;
+				color:black;
+				font-weight: bold;
+			}
+
+
+
+			.footer-dec
+			{
+				font-size: 17px;
+				margin-bottom: 20px;
+				padding-bottom: 5px;
+				background-color:;
+			}
+			
+			
+		</style>
+		
+	<body>
+
+		<div class="container" id="main">
+			<span id="turn">Tic-Tac-Toe</span>
+
+			<!-- show the X or O on the div click -->
+
+			<div class="box" id="box1"></div>
+			<div class="box" id="box2"></div>
+			<div class="box" id="box3"></div>
+			<div class="box" id="box4"></div>	
+			<div class="box" id="box5"></div>
+			<div class="box" id="box6"></div>
+			<div class="box" id="box7"></div>
+			<div class="box" id="box8"></div>
+			<div class="box" id="box9"></div>
+
+		</div>
+		
+			<!-- play again and reset the all info -->
+
+		<button onclick="replay()"> Play-again </button> 
+
+		<div class="container div2nd">
+			<center>
+			<href>*Note- This is the tic-tac-toe game,to play this game tap on the boxes and after won the player
+				screen will automatically reset to play new game,and if all the boxes are fill and player not reach the perfect result then Play Again button also there to reset the game </href>
+			</center>
+		</div>
+
+
+		<div class="container div3rd">
+			<center>
+			<b> Hey guys, if you are not download yet then click on the following to stay updated</b></br>
+			<a href="https://play.google.com/store/apps/details?id=nic.goi.aarogyasetu">click here</a>
+			</center>
+		</div>
+
+		<br>
+		<footer class="footer-dec">
+			<center>
+				<b>Developed by Rahulbantode</b>    
+				
+			</center>	
+		</footer>
+
+		<script type="text/javascript">
+			var turn =document.getElementById("turn"),
+			//boxes = all boxes
+			// X or O = to set X or O into the box
+
+			boxes = document.querySelectorAll("#main div"), X_or_O = 0;
+
+			function  selectWinnerBoxes(b1,b2,b3)
+			{
+				b1.classList.add("win");
+				b2.classList.add("win");
+				b3.classList.add("win");
+				turn.innerHTML = "Congrats!!!";
+				turn.style.fontsize = "40px";
+				replay();
+			}
+
+
+			function getWinner()
+			{
+				var box1 = document.getElementById("box1");
+				var box2 = document.getElementById("box2");
+				var box3 = document.getElementById("box3");
+				var box4 = document.getElementById("box4");
+				var box5 = document.getElementById("box5");
+				var box6 = document.getElementById("box6");
+				var box7 = document.getElementById("box7");
+				var box8 = document.getElementById("box8");
+				var box9 = document.getElementById("box9");
+			
+			//get all the possibillities
+
+			if(box1.innerHTML !== "" && box1.innerHTML === box2.innerHTML && box1.innerHTML === box3.innerHTML)
+				selectWinnerBoxes(box1,box2,box3) 
+					
+			if(box4.innerHTML !== "" && box4.innerHTML === box5.innerHTML && box4.innerHTML === box6.innerHTML)
+				selectWinnerBoxes(box4,box5,box6)
+
+			if(box7.innerHTML !== "" && box7.innerHTML === box8.innerHTML && box7.innerHTML === box9.innerHTML)
+				selectWinnerBoxes(box7,box8,box9)
+
+			if(box1.innerHTML !== "" && box1.innerHTML === box4.innerHTML && box1.innerHTML === box7.innerHTML)
+				selectWinnerBoxes(box1,box4,box7)
+
+			if(box2.innerHTML !== "" && box2.innerHTML === box5.innerHTML && box2.innerHTML === box8.innerHTML)
+				selectWinnerBoxes(box2,box5,box8)
+
+			if(box3.innerHTML !== "" && box3.innerHTML === box6.innerHTML && box3.innerHTML === box9.innerHTML)
+				selectWinnerBoxes(box3,box6,box9)		
+
+			if(box1.innerHTML !== "" && box1.innerHTML === box5.innerHTML && box1.innerHTML === box9.innerHTML)
+				selectWinnerBoxes(box1,box5,box9)
+
+			if(box3.innerHTML !== "" && box3.innerHTML === box5.innerHTML && box3.innerHTML === box7.innerHTML)
+				selectWinnerBoxes(box3,box5,box7)
+
+		}
+
+		//set event onclick
+
+		for (var i=0; i<boxes.length; i++)
+		{
+			boxes[i].onclick = function(){
+				if(this.innerHTML !== "X" && this.innerHTML !== "O")
+				{
+					if(X_or_O%2 === 0)
+					{
+						console.log(X_or_O);
+						this.innerHTML = "X";
+						turn.innerHTML = "O Turn Now";
+						getWinner();
+						X_or_O += 1;
+					}
+					else
+					{
+						console.log(X_or_O);
+						this.innerHTML = "O";
+						turn.innerHTML = "X Turn Now";
+						getWinner();
+						X_or_O += 1;
+					}	
+				}
+			};
+
+		}	
+
+		function replay()
+		{
+			for(var i =0; i<boxes.length; i++)
+			{
+				boxes[i].classList.remove("win");
+				boxes[i].innerHTML = "";
+				turn.innerHTML = "P L A Y - A G A I N";
+				turn.style.fontsize="25px";
+			}
+		} 
+		</script>
+
+</body>
+</html>
